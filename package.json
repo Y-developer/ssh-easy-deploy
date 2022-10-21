@@ -1,0 +1,17 @@
+{
+  "name": "ssh-easy-deploy",
+  "version": "1.0.0",
+  "description": "Easy deployments static sites using with ssh",
+  "main": "index.js",
+  "bin": {
+    "deploy": "./bin/deploy"
+  },
+  "scripts": {
+    "deploy": "deploy"
+  },
+  "author": "Yasitha Nadeeshan",
+  "license": "MIT",
+  "dependencies": {
+    "node-ssh": "^13.0.0"
+  }
+}
