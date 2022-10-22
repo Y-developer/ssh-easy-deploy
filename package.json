@@ -1,7 +1,7 @@
 {
   "name": "@y-developer/ssh-easy-deploy",
-  "version": "1.0.0",
-  "description": "Easy deployments static sites using with ssh",
+  "version": "2.0.0",
+  "description": "Static site deployment to the host is very easy.",
   "main": "src/index.js",
   "bin": {
     "deploy": "./bin/deploy"
