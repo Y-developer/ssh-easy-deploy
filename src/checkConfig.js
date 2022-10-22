@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { configFileName, configTemplate, requiredConfigKeys } = require("./constant");
+const writeConfig = require("./writeConfig");
 const grammer = require("./grammar");
 
 // Is config file available ?
