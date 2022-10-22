@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const { configFileName, projectDir } = require("./constant");
 const { hasConfigFile, hasRequiredKeys, hasRequiredValues } = require("./checkConfig");
 

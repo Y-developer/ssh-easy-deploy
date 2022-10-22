@@ -1,3 +1,4 @@
+const path = require("path");
 const { NodeSSH } = require("node-ssh");
 const readConfig = require("./readConfig");
 
