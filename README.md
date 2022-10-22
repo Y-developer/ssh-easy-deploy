@@ -24,27 +24,24 @@ Also `deploy.config.json` **should add the .gitignore** because it has confident
 
 ```json
 {
-    // username for ssh connection
     "username": "",
-
-    // hostname for ssh connection
     "host": "",
-
-    // port for ssh connction
     "port": 0, 
-
-    // password for ssh connection
     "password": "", 
-
-    // the absolute path of the remote directory your site to be host
-    // example: /home/username/public_html
     "remote_dir": "",
-
-    //the relative path of your final distribution files
-    // example: /dist
     "local_dir": ""
 }
 ```
+
+|key|description|
+|-|-|
+|`username`|username for ssh connection|
+|`host`|hostname for ssh connection|
+|`port`|port for ssh connction|
+|`password`|password for ssh connection|
+|`remote_dir`|the absolute path of the remote directory your site to be host (example: /home/username/public_html)|
+|`local_dir`|the relative path of your final distribution files (example: /dist)|
+
 
 ## Todo
 - create ssh connection with privateKeyPath
