@@ -1,6 +1,7 @@
 const path = require("path");
 const { NodeSSH } = require("node-ssh");
 const readConfig = require("./readConfig");
+const isDeleteConfirm = require("./isDeleteConfirm");
 
 function deploy() {
 
@@ -47,10 +48,10 @@ function deploy() {
 
         const strFiles = rawFileString.toString('utf8');
         const files = strFiles.split("\n");
-        
+
         // if there haven't any files or folders
         if (files.length === 1 && files[0] === "") return []
-        
+
         // if have files or folders
         return files;
     }
@@ -58,6 +59,12 @@ function deploy() {
     // =================================================================================== //
     // remove files and folders accoding to files array
     const rmrf = async (files) => {
+
+        const canDelete = isDeleteConfirm(files);
+
+        if (!canDelete) {
+            return false;
+        }
 
         console.log('>>>>>> Start delete files & folders');
 
@@ -110,6 +117,13 @@ function deploy() {
     }
 
     // =================================================================================== //
+    // exit for deployment process
+    const exit = () => {
+        console.log('>>>>>> Exit from deployment process');
+        ssh.dispose();
+    }
+
+    // =================================================================================== //
     // Process of deployment
     ssh.connect(sshData)
         .then(async () => {
@@ -132,13 +146,18 @@ function deploy() {
                         console.log(">>>>>> Successfully deleted all files and folders in remote directory!");
 
                         const isTranfer = await transferFilesAndFolders();
-                        if (isTranfer) ssh.dispose();
+                        if (isTranfer) {
+                            exit();
+                        }
 
                     } else {
                         console.log(`>>>>>> ${emptyFileArray.join()} ${gSingularPlural(emptyFileArray.length, "is/are")} not deleted`);
-                        ssh.dispose();
+                        exit();
                     }
 
+                } else {
+                    console.log('>>>>>> User not allow to delete any files or folders');
+                    exit();
                 }
 
             } else {
