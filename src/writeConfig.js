@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { configFileName } = require("./constant");
+const addToGitIgnore = require("./addToGitIgnore");
 
 function writeConfig(dataObj) {
     const content = JSON.stringify(dataObj, null, 1);
@@ -10,6 +11,7 @@ function writeConfig(dataObj) {
             return;
         }
         console.log(`>>>>>> Please fill it`);
+        addToGitIgnore();
     });
 }
 
