@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { configFileName, projectDir } = require("./constant");
 const { hasConfigFile, hasRequiredKeys, hasRequiredValues } = require("./checkConfig");
+const addToGitIgnore = require("./addToGitIgnore");
 
 // json file convert to js object
 // if config file has json return empty js object
@@ -19,6 +20,8 @@ function readConfig() {
 
     // check project folder has deploy.config.js file
     if (hasConfigFile()) {
+
+        addToGitIgnore();
 
         // convert json to javascript object
         console.log(`>>>>>> Start to read ${configFileName}`);
