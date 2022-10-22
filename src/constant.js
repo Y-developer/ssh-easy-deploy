@@ -1,6 +1,4 @@
-const path = require("path");
-
-const configFileName = "deploy.config.js";
+const configFileName = "deploy.config.json";
 
 const configTemplate = {
     username: "",
@@ -13,7 +11,7 @@ const configTemplate = {
 
 const requiredConfigKeys = Object.keys(configTemplate);
 
-const projectDir = path.resolve(__dirname, "../../");
+const projectDir = process.cwd();
 
 module.exports = {
     configFileName,
